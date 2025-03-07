@@ -1,0 +1,265 @@
+@{
+    ViewData["Title"] = "Phiếu Đánh Giá";
+}
+
+<div class="app-container">
+    <div class="content-wrapper">
+        <div class="row p-4">
+            <div class="@(ViewBag.ShowForm == true ? "col-md-8" : "col-md-12")" id="listSection">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">Danh sách phiếu đánh giá</h5>
+                        <button class="btn btn-primary hover-scale" onclick="toggleForm()">
+                            <i class='bx bx-plus'></i> Thêm phiếu đánh giá
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white border-end-0">
+                                        <i class='bx bx-search'></i>
+                                    </span>
+                                    <input type="text" class="form-control border-start-0 ps-0"
+                                        placeholder="Tìm kiếm phiếu đánh giá...">
+                                </div>
+                            </div>
+                            <div class="col-md-8 text-end">
+                                <div class="btn-group">
+                                    <button class="btn btn-outline-secondary">
+                                        <i class='bx bx-export'></i> Xuất Excel
+                                    </button>
+                                    <button class="btn btn-outline-secondary">
+                                        <i class='bx bxs-file-pdf'></i> Xuất PDF
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Mã PĐG</th>
+                                        <th>Ngày lập</th>
+                                        <th>Nhận xét</th>
+                                        <th>Tên GV</th>
+                                        <th>Tên SV</th>
+                                        <th>Điểm TB</th>
+                                        <th>Xếp loại</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>PDG001</td>
+                                        <td>01/03/2025</td>
+                                        <td>Sinh viên hoàn thành tốt nhiệm vụ</td>
+                                        <td>Nguyễn Văn A</td>
+                                        <td>Trần Thị B</td>
+                                        <td><span class="badge bg-success">8.5</span></td>
+                                        <td>Giỏi</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-warning hover-scale" title="Chỉnh sửa"
+                                                onclick="editEvaluation('PDG001')">
+                                                <i class='bx bx-edit'></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger hover-scale" title="Xóa"
+                                                onclick="confirmDelete('PDG001')">
+                                                <i class='bx bx-trash'></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <nav aria-label="Page navigation" class="mt-4">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#"><i class='bx bx-chevron-left'></i></a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class='bx bx-chevron-right'></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" id="formSection" style="display: none;">
+                <div class="card modern-form">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">
+                            <i class='bx bx-plus-circle me-2'></i>Thêm phiếu đánh giá
+                        </h5>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="toggleForm()">
+                            <i class='bx bx-x'></i>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <form asp-controller="Evaluation" asp-action="Create" method="post">
+                            <div class="row g-4">
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="week" name="Week" required>
+                                        <label for="week">Tuần</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <input type="number" step="0.1" class="form-control" id="score" name="Score" required>
+                                        <label for="score">Điểm Số</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="notes" name="Notes" style="height: 100px"></textarea>
+                                        <label for="notes">Ghi Chú</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-end mt-4">
+                                <button type="button" class="btn btn-outline-secondary me-2" onclick="toggleForm()">
+                                    <i class='bx bx-x'></i> Hủy
+                                </button>
+                                <button type="submit" class="btn btn-primary hover-scale">
+                                    <i class='bx bx-save'></i> Lưu thông tin
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" id="editFormSection" style="display: none;">
+                <div class="card modern-form">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">
+                            <i class='bx bx-edit-alt me-2'></i>Thông tin phiếu đánh giá
+                        </h5>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" onclick="toggleEditForm()">
+                            <i class='bx bx-x'></i>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <form asp-controller="Evaluation" asp-action="Edit" method="post">
+                            <div class="row g-4">
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="editEvaluationId" name="EvaluationId" readonly>
+                                        <label for="editEvaluationId">Mã PĐG</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="editWeek" name="Week" required>
+                                        <label for="editWeek">Tuần</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <input type="date" class="form-control" id="editDate" name="CreationDate" required>
+                                        <label for="editDate">Ngày Lập</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <input type="number" step="0.1" class="form-control" id="editScore" name="Score" required>
+                                        <label for="editScore">Điểm Số</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" id="editNotes" name="Notes" style="height: 100px"></textarea>
+                                        <label for="editNotes">Ghi Chú</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-end mt-4">
+                                <button type="button" class="btn btn-outline-secondary me-2" onclick="toggleEditForm()">
+                                    <i class='bx bx-x'></i> Hủy
+                                </button>
+                                <button type="submit" class="btn btn-primary hover-scale">
+                                    <i class='bx bx-save'></i> Lưu thông tin
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function toggleForm() {
+            const formSection = document.getElementById('formSection');
+            const listSection = document.getElementById('listSection');
+
+            if (formSection.style.display === 'none') {
+                listSection.className = 'col-md-8';
+                formSection.style.display = 'block';
+                setTimeout(() => {
+                    formSection.classList.add('show');
+                }, 50);
+            } else {
+                listSection.className = 'col-md-12';
+                formSection.classList.remove('show');
+                setTimeout(() => {
+                    formSection.style.display = 'none';
+                }, 300);
+            }
+        }
+
+        function toggleEditForm() {
+            const editFormSection = document.getElementById('editFormSection');
+            const listSection = document.getElementById('listSection');
+
+            if (editFormSection.style.display === 'none') {
+                listSection.className = 'col-md-8';
+                editFormSection.style.display = 'block';
+                setTimeout(() => {
+                    editFormSection.classList.add('show');
+                }, 50);
+            } else {
+                listSection.className = 'col-md-12';
+                editFormSection.classList.remove('show');
+                setTimeout(() => {
+                    editFormSection.style.display = 'none';
+                }, 300);
+            }
+        }
+
+        function editEvaluation(evaluationId) {
+            // Fetch evaluation data and populate the form for editing
+            const evaluationData = {
+                id: evaluationId,
+                week: 5,
+                date: "2025-03-01",
+                score: 8.5,
+                notes: "Sinh viên hoàn thành tốt nhiệm vụ"
+            };
+
+            document.getElementById('editEvaluationId').value = evaluationData.id;
+            document.getElementById('editWeek').value = evaluationData.week;
+            document.getElementById('editDate').value = evaluationData.date;
+            document.getElementById('editScore').value = evaluationData.score;
+            document.getElementById('editNotes').value = evaluationData.notes;
+
+            toggleEditForm(); // Show the form with the populated data
+        }
+
+        function confirmDelete(evaluationId) {
+            if (confirm('Bạn có chắc muốn xóa phiếu đánh giá này không?')) {
+                // Proceed with deletion
+                alert('Đã xóa phiếu đánh giá có ID: ' + evaluationId);
+            }
+        }
+    </script>
+}

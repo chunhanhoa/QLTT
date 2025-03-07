@@ -1,0 +1,45 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\Code\\All_File\\Test3\\WebTest\\ABC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D6883A07-A5D4-4F91-A321-9671BA0E5ECD}|ABC\\ABC.csproj|c:\\users\\asus\\onedrive\\m\u00E1y t\u00EDnh\\code\\all_file\\test3\\webtest\\abc\\abc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D6883A07-A5D4-4F91-A321-9671BA0E5ECD}|ABC\\ABC.csproj|solutionrelative:abc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\Code\\All_File\\Test3\\WebTest\\ABC\\ABC\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "ABC\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\OneDrive\\M\u00E1y t\u00EDnh\\Code\\All_File\\Test3\\WebTest\\ABC\\ABC\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "ABC\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAAAFYAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-07T15:00:05.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
